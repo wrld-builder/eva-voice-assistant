@@ -5,6 +5,9 @@ from random import choice
 from weather import WeatherDefinition
 from train.intents_training import IntentsTraining
 from train.intents_training import translate_reverse
+from re import compile
+from ui.eva_cube import EvaMagicCube
+from threading import Thread
 
 def lin_rec(recorder_recognizer):
     listened_audio = recorder_recognizer.record_audio()
@@ -50,6 +53,9 @@ class EvaAssistant:
         self.__rec_rec = RecorderRecognizer()
         self.__response_filter = ResponseFilter()
 
+        self.__eva_magic_cube = EvaMagicCube()
+        self.__eva_magic_cube.set_cube_vertices()
+
     def setupAssistant(self):
         voices = self.__initialEngine.getProperty('voices')
 
@@ -67,25 +73,44 @@ class EvaAssistant:
         self.__initialEngine.say(str(current_text))
         self.__initialEngine.runAndWait()
 
+    def synth_eva(self, voice_input):
+        voice_input = voice_input[4:len(voice_input)].capitalize()
+        intention = self.__response_filter.filter_voice_input(voice_input)  # threading soon
+        action = self.__response_filter.filter_action(voice_input)
+
+        if intention:
+            if intention[len(intention) - 1] == 'greeting':  # intetion[0] - list of answers
+                self.say_current_text(choice(intention[0]))
+            elif intention[len(intention) - 1] == 'weather_today':
+                self.say_current_text(choice(intention[0]))
+                WeatherDefinition().say_weather('Санкт-Петербург', self)
+            elif intention[len(intention) - 1] == 'weather_tomorrow':
+                self.say_current_text(choice(intention[0]))
+        elif action:
+            if action[len(action) - 1] == 'training':
+                self.say_current_text(choice(action[0]))
+                training_mode_start(self, self.__response_filter)
+        else:
+            pass
+
     def assistant_work(self):
+        iterator = True
         while True:
             voice_input = self.__rec_rec.recognize_audio(self.__rec_rec.record_audio())
             print(voice_input)
 
-            intention = self.__response_filter.filter_voice_input(voice_input)      #threading soon
-            action = self.__response_filter.filter_action(voice_input)
+            if voice_input and compile(r'\w+').findall(voice_input)[0] in \
+                    [line.rstrip('\n') for line in open('res/approximately_words', encoding='utf-8')]:
+                eva_magic_cube_thread = Thread()
 
-            if intention:
-                if intention[len(intention) - 1] == 'greeting':              #intetion[0] - list of answers
-                    self.say_current_text(choice(intention[0]))
-                elif intention[len(intention) - 1] == 'weather_today':
-                    self.say_current_text(choice(intention[0]))
-                    WeatherDefinition().say_weather('Санкт-Петербург', self)
-                elif intention[len(intention) - 1] == 'weather_tomorrow':
-                    self.say_current_text(choice(intention[0]))
-            elif action:
-                if action[len(action) - 1] == 'training':
-                    self.say_current_text(choice(action[0]))
-                    training_mode_start(self, self.__response_filter)
+                if iterator:
+                    eva_magic_cube_thread = Thread(target=self.__eva_magic_cube.update_stuff)
+                    iterator = False
+
+                if eva_magic_cube_thread.is_alive() == False:
+                    eva_magic_cube_thread.start()
+
+                self.synth_eva(voice_input)
             else:
+                print('Say my name please')
                 pass
