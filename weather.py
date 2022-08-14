@@ -1,11 +1,12 @@
 from pyowm.owm import OWM
 from pyowm.utils.config import get_default_config
+from config.config import OWM_TOKEN
 
 class WeatherDefinition():
     def __init__(self):
         self.__config_dict = get_default_config()
         self.__config_dict['language'] = 'ru'
-        self.__owm = OWM('2a29b038800b6c23600d4431501afbf3', self.__config_dict)
+        self.__owm = OWM(str(OWM_TOKEN), self.__config_dict)
         self.__mgr = self.__owm.weather_manager()
 
     def get_weather(self, city):

@@ -8,6 +8,7 @@ from train.intents_training import translate_reverse
 from re import compile
 from multiprocessing import Process
 from ui.ui_call import call_ui
+from config.config import UI
 
 def lin_rec(recorder_recognizer):
     listened_audio = recorder_recognizer.record_audio()
@@ -97,8 +98,12 @@ class EvaAssistant:
 
             if voice_input and compile(r'\w+').findall(voice_input)[0] in \
                     [line.rstrip('\n') for line in open('res/approximately_words', encoding='utf-8')]:
-                call_ui_process = Process(target=call_ui)
-                call_ui_process.start()
+                if UI:
+                    call_ui_process = Process(target=call_ui)
+                    call_ui_process.start()
+                else:
+                    pass
+
                 self.synth_eva(voice_input)
             else:
                 print('Say my name please')
