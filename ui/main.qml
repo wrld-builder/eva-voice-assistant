@@ -7,6 +7,7 @@ Window {
     height: 70
     visible: true
     opacity: 0.6
+    color: "blue"
     flags: Qt.FramelessWindowHint
     x: Screen.width / 2
     y: 5
@@ -80,3 +81,4 @@ Window {
         running: true
     }
 }
+

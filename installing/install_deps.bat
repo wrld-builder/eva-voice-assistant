@@ -1,9 +1,0 @@
-pip install pyttsx3
-pip install SpeechRecognition
-pip install vosk
-pip install pyaudio
-pip install pyowm
-pip install pygame
-pip install re
-pip install random2
-pip install PyQt6

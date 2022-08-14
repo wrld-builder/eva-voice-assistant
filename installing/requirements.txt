@@ -1,0 +1,7 @@
+pyttsx3
+SpeechRecognition
+vosk
+pyaudio
+pyowm
+pygame
+random2

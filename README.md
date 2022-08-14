@@ -14,19 +14,20 @@
 - [Python3](https://www.python.org/downloads/release/python-3100/)
 - [C++ 17](https://en.cppreference.com/w/cpp/17)
 - [Qt 5.12.12](https://www.qt.io/offline-installers)
+- [SpeachRecognition](https://pypi.org/project/SpeechRecognition/)
 
 ## Использование
 
 Установите необходимые зависимости, чтобы запустить приложение:
 
-Перейдите в директорию installing и запустите install_deps.bat
+Перейдите в директорию installing и воспользуйтесь _requirements.txt_
 ```sh
-$ installing/install_deps.bat
+$ pip install -r requirements.txt
 ```
 
-Перейдите в главную директорию проектв и запустите:
+Перейдите в главную директорию проекта и запустите:
 ```sh
-$ python3 main.py
+$ python main.py
 ```
 
 ## Разработка
@@ -35,9 +36,9 @@ $ python3 main.py
 Для установки и запуска проекта, необходим [Python3](https://www.python.org/downloads/release/python-3100/) и [Qt 5.12.12](https://www.qt.io/offline-installers)
 
 ### Установка зависимостей
-Для установки зависимостей, выполните .bat файл:
+Для быстрой установки зависимостей, выполните _requirements.txt_:
 ```sh
-$ installing/install_deps.bat
+$ pip install -r requirements.txt
 ```
 
 ## Deploy и CI/CD
@@ -66,4 +67,4 @@ $ installing/install_deps.bat
 
 ## Команда проекта
 
-- [Михаил Шунин](tg://resolve?domain=logbaby) — Owner // C++, Python developer 
+- [Михаил Шунин](https://t.me/logbaby) — Owner // C++, Python developer 
