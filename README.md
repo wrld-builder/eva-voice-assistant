@@ -12,7 +12,7 @@
 
 ## Технологии
 - [Python3](https://www.python.org/downloads/release/python-3100/)
-- [C++ 17](https://en.cppreference.com/w/cpp/17)
+- [C++ 11](https://en.cppreference.com/w/cpp/17)
 - [Qt 5.12.12](https://www.qt.io/offline-installers)
 - [SpeachRecognition](https://pypi.org/project/SpeechRecognition/)
 
@@ -25,7 +25,18 @@
 $ pip install -r requirements.txt
 ```
 
-Перейдите в главную директорию проекта и запустите:
+Для того, чтобы собрать простенькое графическое окружение для Евы, потребуется установить [Qt 5.12.12](https://www.qt.io/offline-installers), перейти в директорию _ui_ и затем запустить сборку проекта с помощью CMake:
+```sh
+$ cmake CMakeLists.txt
+```
+
+Далее, сгенерированный _Makefile_ должен получить разрешение. После этого его можно будет запустить:
+```sh
+$ chmod +x Makefile
+$ make
+```
+
+Отлично! Окружение готово. Теперь перейдите в главную директорию проекта и запустите Еву:
 ```sh
 $ python main.py
 ```

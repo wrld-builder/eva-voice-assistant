@@ -1,5 +1,10 @@
 *.log
 *.user
+*.vcxproj
+*.filters
+*.sln
+.vs/
 venv/
 build/
 __pycache__/
+.idea/

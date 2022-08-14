@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.14)
 project(ui VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
-
+set(CMAKE_PREFIX_PATH "C:\\Qt\\Qt5.12.12\\5.12.12\\mingw73_64\\")
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
