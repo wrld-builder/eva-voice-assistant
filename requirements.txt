@@ -4,4 +4,4 @@ vosk
 pyaudio
 pyowm
 pygame
-random2
+pyrogram
