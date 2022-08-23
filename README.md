@@ -50,7 +50,7 @@ $ python main.py
 
 Для этого, создаём приложение в [_Telegram App_](https://my.telegram.org/apps), как показано на картинке ниже:
 
-![Image](https://github.com/loganbaby/eva-voice-assistant/res/images/tg_app.png)
+![Image](https://github.com/loganbaby/eva-voice-assistant/blob/main/res/images/tg_app.png)
 
 Копируем **_APP_ID_** и **_APP_HASH_**, вставляем в **_config/config.py_**
 
