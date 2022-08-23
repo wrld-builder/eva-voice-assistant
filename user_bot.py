@@ -3,7 +3,7 @@ from time import sleep
 from config.config import API_ID_TG, API_HASH_TG
 from os import path
 from random import choice
-
+from search_system_filter import search_system_filter
 import res.user_bot_globals as USER_GLOBALS
 
 APP_TELEGRAM = Client("my_account", API_ID_TG, API_HASH_TG)
@@ -28,6 +28,19 @@ def quote(_, message):
             message.edit(str(random_quote))
     except:
         TypeError('Path res/quotes.txt not exists')
+
+@APP_TELEGRAM.on_message(filters.command('reel', prefixes='.') & filters.me)
+def reel(_, message):
+    message.edit('⚡ Заряжаем...')
+    sleep(1)
+    message.edit('🎰 Прокручиваем...')
+    sleep(1)
+    message.edit(choice(USER_GLOBALS.REEL_ISSUES))
+
+@APP_TELEGRAM.on_message(filters.command('search', prefixes='.') & filters.me)
+def search(_, message):
+    response_text = message.text.split('.search', maxsplit=1)[1]
+    message.edit(search_system_filter(response_text, message))
 
 if __name__ == '__main__':
     APP_TELEGRAM.run()

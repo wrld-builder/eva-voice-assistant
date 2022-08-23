@@ -3,5 +3,5 @@ SpeechRecognition
 vosk
 pyaudio
 pyowm
-pygame
 pyrogram
+google
