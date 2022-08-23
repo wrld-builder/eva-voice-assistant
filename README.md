@@ -43,6 +43,23 @@ set(CMAKE_PREFIX_PATH "")
 $ python main.py
 ```
 
+## User-Bot Eva
+Изначально, Ева является не только голосовым ассистентом, но и _юзер-ботом_ для **_Telegram_**
+
+Это обозначает, что в проекте есть 2 конфигурации программы. Запуск первой мы разобрали выше, сейчас мы запустим Еву в режиме **_User-Bot_**
+
+Для этого, создаём приложение в [_Telegram App_](https://my.telegram.org/apps), как показано на картинке ниже:
+
+![Image](https://github.com/loganbaby/eva-voice-assistant/res/images/tg_app.png)
+
+Копируем **_APP_ID_** и **_APP_HASH_**, вставляем в **_config/config.py_**
+
+Запускаем:
+
+```sh
+$ python user_bot.py
+```
+
 ## Разработка
 
 ### Требования
@@ -63,8 +80,8 @@ $ pip install -r requirements.txt
 Также можно обращаться ко мне в Telegram или во ВКонтакте за любой помощью и подсказками. Сделаем проект лучше!
 
 - **_e-mail_** - shifo3456@gmail.com
-- **_VK_** - [link](https://vk.com/logbaby)
-- **_Telegram_** - [link](https://t.me/logbaby)
+- **_VK_** - [Дмитрий Котов](https://vk.com/logbaby)
+- **_Telegram_** - [logbaby](https://t.me/logbaby)
 
 ## We are looking for
 Для разработки проекта требуются следующие люди:
@@ -82,7 +99,10 @@ $ pip install -r requirements.txt
 ## To do
 - [ ] Написать синтезатор речи
 - [ ] Озвучить голосового ассистента
+- [ ] Пересмотреть механику тренировки ИИ
+- [x] Сделать скелет для юзер-бота
+- [x] Улучшить эвристики для написания модулей юзер-бота
 
 ## Команда проекта
 
-- [Михаил Шунин](https://t.me/logbaby) — Owner // C++, Python developer 
+- [Дмитрий Котов](https://t.me/logbaby) — Owner // C++, Python developer 

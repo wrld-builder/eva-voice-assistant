@@ -7,4 +7,4 @@ def call_ui():
     elif path.exists('ui/build/ui.exe'):
         system(path.abspath('ui/build/ui.exe'))
     else:
-        print('Path not exists')
+        print('Path build/ui.exe and ui/build/ui.exe not exists')
